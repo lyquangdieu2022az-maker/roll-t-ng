@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101418">
+    <title>TFT Roll Helper</title>
+    <link rel="manifest" href="./manifest.webmanifest">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="app">
+      <section class="panel planner" aria-labelledby="title">
+        <div>
+          <p class="eyebrow">TFT roll helper</p>
+          <h1 id="title">Tính lượt roll đáng thử</h1>
+          <p class="lede">Nhập cấp, vàng và tướng cần tìm. Bạn tự roll trong game, app chỉ giúp tính xác suất và nhắc mốc vàng.</p>
+        </div>
+
+        <div class="controls" aria-label="Thông tin hiện tại">
+          <label>
+            Cấp hiện tại
+            <select id="level">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7" selected>7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+            </select>
+          </label>
+
+          <label>
+            Vàng có thể dùng
+            <input id="gold" type="number" min="0" max="200" value="30" inputmode="numeric">
+          </label>
+
+          <label>
+            Giá tướng cần tìm
+            <select id="cost">
+              <option value="1">1 vàng</option>
+              <option value="2">2 vàng</option>
+              <option value="3" selected>3 vàng</option>
+              <option value="4">4 vàng</option>
+              <option value="5">5 vàng</option>
+            </select>
+          </label>
+
+          <label>
+            Số bản còn thiếu
+            <input id="needed" type="number" min="1" max="9" value="1" inputmode="numeric">
+          </label>
+        </div>
+
+        <div class="summary" aria-live="polite">
+          <div>
+            <span class="label">Lượt roll tối đa</span>
+            <strong id="rolls">15</strong>
+          </div>
+          <div>
+            <span class="label">Tỉ lệ mỗi ô shop</span>
+            <strong id="slotRate">35%</strong>
+          </div>
+          <div>
+            <span class="label">Cơ hội thấy ít nhất 1 ô đúng giá</span>
+            <strong id="hitRate">99%</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel targets" aria-labelledby="targetsTitle">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Danh sách săn</p>
+            <h2 id="targetsTitle">Tướng mục tiêu</h2>
+          </div>
+          <button id="addTarget" type="button">Thêm</button>
+        </div>
+
+        <div class="target-form">
+          <input id="targetName" type="text" placeholder="VD: Aphelios, Annie..." maxlength="24">
+          <select id="targetCost" aria-label="Giá tướng">
+            <option value="1">1 vàng</option>
+            <option value="2">2 vàng</option>
+            <option value="3">3 vàng</option>
+            <option value="4">4 vàng</option>
+            <option value="5">5 vàng</option>
+          </select>
+        </div>
+
+        <ul id="targetList" class="target-list"></ul>
+      </section>
+
+      <section class="panel advice" aria-labelledby="adviceTitle">
+        <div class="banner-image" role="img" aria-label="Bàn cờ chiến thuật tối giản"></div>
+        <div>
+          <p class="eyebrow">Nhắc nhanh</p>
+          <h2 id="adviceTitle">Khi nào nên roll?</h2>
+        </div>
+        <p id="adviceText">Giữ trên 30 vàng nếu chưa cần mạnh ngay. Roll sâu khi bạn thiếu ít bản và đúng mốc cấp có tỉ lệ tốt.</p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
